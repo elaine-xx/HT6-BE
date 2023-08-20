@@ -19,7 +19,8 @@ class Conversation(Resource):
     return { "answer": answer, "history": self.history }, 200
 
   def submit_question(self, question, history, image_url):
-    self.history = self.pre_adjust_history(question)
+    history = self.history.strip() + '\n' + f'user: {question}'.strip()
+    history = self.adjust_history(history)
 
     answer = self.client.run(
       "daanelson/minigpt-4:b96a2f33cc8e4b0aa23eacfce731b9c41a7d9466d9ed4e167375587b54db9423",
@@ -31,19 +32,14 @@ class Conversation(Resource):
       }
     ).strip()
 
-    self.history = self.post_adjust_history(answer)
+    self.history = history + '\n' + f'assistant: {answer}'
     return answer
 
-  def pre_adjust_history(self, question):
-    history = f'{self.history.strip()}\nuser: {question}'.strip()
+  def adjust_history(self, history):
     num_tokens = len(tiktoken.get_encoding("cl100k_base").encode(history)) * 1.25
 
     while num_tokens >= 2000:
-      history = history[history[history.find("user:")+1:].find("user:")+1:].strip()
-      num_tokens = len(tiktoken.get_encoding("cl100k_base").encode(history)) * 1.25
+        history = history[history[history.find('user:')+1:].find('user:')+1:].strip()
+        num_tokens = len(tiktoken.get_encoding("cl100k_base").encode(history)) * 1.25
 
     return history
-
-  def post_adjust_history(self, answer):
-    return f'{self.history}\nassistant: {answer}'
-
