@@ -28,7 +28,7 @@ class Conversation(Resource):
         "prompt": history,
         "image": image_url, # open(image_url, 'rb'),
         "num_beams": 1,
-        "temperature": 0.1
+        "temperature": 0.05
       }
     ).strip()
 
