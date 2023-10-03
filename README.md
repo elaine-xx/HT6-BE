@@ -4,7 +4,7 @@
 ![blink](https://github.com/Adibvafa/Blink/assets/90617686/0e863802-d055-4bc0-ac5f-38cc2b813041)
 
 ## About
-Blink is an advanced mobile app that leverages cutting-edge AI technologies, including MiniGPT-4, to revolutionise image analysis and user interaction. Through a simple double-tap on the screen, users capture images that are then comprehensively analyzed by the AI to provide an auditory description. Tapping & Holding the screen enables users to ask follow-up questions about the image.<br><br>Blink empowers the visually impaired by offering them an independent means to perceive their environment.
+Blink is an advanced mobile app that leverages cutting-edge AI technologies, including MiniGPT-4, to revolutionise image analysis and user interaction. Through a simple double-tap on the screen, users capture images that are then comprehensively analyzed by the AI to provide an auditory description. Tapping & Holding the screen enables users to ask an embedded AI Agent follow-up questions about the image.<br><br>Blink empowers the visually impaired by offering them an independent means to perceive their environment.
 
 ## Features
 ![image](https://github.com/Adibvafa/Blink/assets/90617686/d16fcd5e-4319-47f8-97cc-27f23f8b4a63)
